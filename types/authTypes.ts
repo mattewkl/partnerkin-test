@@ -6,5 +6,9 @@ export type UserDataType = {
     createdAt: string;
     updatedAt: string;
     image: string;
-    socialLinks: Record<string, string>[];
+    socialLinks: {
+      name: string;
+      url: string;
+      icon: string;
+    }[];
 }

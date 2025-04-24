@@ -10,7 +10,24 @@
       "image": "https://i.pinimg.com/736x/3b/96/97/3b9697d382f296615fdf88b843c983f0.jpg",
       "socialLinks": [
         {
-          "vk": "https://vk.com/ivanpetrov"
+          "name": "facebook",
+          "url": "https://www.facebook.com",
+          "icon": "facebook"
+        },
+        {
+          "name": "instagram",
+          "url": "https://www.instagram.com",
+          "icon": "instagram"
+        },
+        {
+          "name": "twitter",
+          "url": "https://www.twitter.com",
+          "icon": "twitter"
+        },
+        {
+          "name": "vk",
+          "url": "https://www.vk.com",
+          "icon": "vk"
         }
       ]
     },
@@ -24,7 +41,9 @@
       "image": "https://images.steamusercontent.com/ugc/1025077468226875493/D95E4AC6810623CA2D5D4FB9D7A4F6332A65B66B/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
       "socialLinks": [
         {
-          "telegram": "https://t.me"
+          "name": "telegram",
+          "url": "https://t.me",
+          "icon": "telegram"
         }
       ]
     }

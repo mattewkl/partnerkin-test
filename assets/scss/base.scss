@@ -1,9 +1,10 @@
 .base-container {
-  width: 104rem;
+  max-width: 104rem;
   margin: 0 auto;
   border: 0.1rem solid black;
   min-height: 100vh;
   box-sizing: border-box;
+  background-color: $bg-secondary;
 } 
 
 .base-text {
@@ -12,4 +13,19 @@
     padding: 0;
     line-height: 1.2;
     letter-spacing: 0;
+    color: $text-primary;
 }
+
+@media (max-width: 1400px) {
+  .base-container {
+    max-width: calc(76.8rem + (104 - 76.8) * ((100vw - 1024px) / (1400 - 1024)));
+  }
+}
+
+@media (max-width: 1024px) {
+  .base-container {
+    max-width: 76.8rem;
+  }
+}
+
+
