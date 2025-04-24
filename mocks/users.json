@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Титова Елена Николаевна",
+      "email": "titova@gmail.com",
+      "username": "username",
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z",
+      "image": "https://i.pinimg.com/736x/3b/96/97/3b9697d382f296615fdf88b843c983f0.jpg",
+      "socialLinks": [
+        {
+          "vk": "https://vk.com/ivanpetrov"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Бежоев Сергей Кимович",
+      "email": "bezheev@gmail.com",
+      "username": "etogokazino",
+      "createdAt": "2024-01-10T15:30:00Z",
+      "updatedAt": "2024-01-10T15:30:00Z",
+      "image": "https://images.steamusercontent.com/ugc/1025077468226875493/D95E4AC6810623CA2D5D4FB9D7A4F6332A65B66B/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+      "socialLinks": [
+        {
+          "telegram": "https://t.me"
+        }
+      ]
+    }
+  ]
+} 
