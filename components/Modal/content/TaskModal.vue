@@ -56,7 +56,7 @@
         :disabled="isLoading"
       >
         <span class="base-text task-modal__btn-text">
-          {{ isLoading ? 'Отправка...' : 'Подтвердить' }}
+          {{ isLoading ? 'Отправка...' : 'Отправить' }}
         </span>
       </button>
     </form>
@@ -208,7 +208,7 @@ const handleSubmit = async () => {
   padding: 1.3rem 2.4rem;
   border: none;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: flex-start;
   margin-top: 0.8rem;
 
   &:disabled {
