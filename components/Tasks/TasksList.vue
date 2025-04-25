@@ -23,5 +23,6 @@ const props = defineProps<{
   margin: 0;
   padding: 0;
   list-style: none;
+  padding-bottom: 2.4rem;
 }
 </style>
