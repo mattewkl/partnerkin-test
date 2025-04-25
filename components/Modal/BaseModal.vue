@@ -31,17 +31,17 @@ const handleEscape = (e: KeyboardEvent) => {
   }
 }
 
-// Обработка кнопки назад на Android
-const handlePopState = () => {
-  if (isOpen.value) {
-    modalStore.closeModal()
-    history.pushState(null, '', window.location.href)
-  }
-}
+// Обработка кнопки назад на Android, но она отправляет на предыдущую, можно тоже сделать рабочим, но не знаю  хорошая ил это идея
+// const handlePopState = () => {
+//   if (isOpen.value) {
+//     modalStore.closeModal()
+//     history.pushState(null, '', window.location.href)
+//   }
+// }
 
 onMounted(() => {
   document.addEventListener('keydown', handleEscape)
-  window.addEventListener('popstate', handlePopState)
+//   window.addEventListener('popstate', handlePopState)
   if (isOpen.value) {
     history.pushState(null, '', window.location.href)
   }
@@ -49,7 +49,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleEscape)
-  window.removeEventListener('popstate', handlePopState)
+//   window.removeEventListener('popstate', handlePopState)
 })
 </script>
 

@@ -57,7 +57,7 @@
         :disabled="isLoading"
       >
         <span class="base-text task-modal__btn-text">
-          {{ isLoading ? 'Отправка...' : 'Отправить' }}
+          {{ buttonText }}
         </span>
       </button>
     </form>
@@ -86,8 +86,15 @@ const formData = ref({
 })
 
 const isLoading = ref(false)
+const isSuccess = ref(false)
 const error = ref<string | null>(null)
 const validationErrors = ref<Record<string, string>>({})
+
+const buttonText = computed(() => {
+  if (isSuccess.value) return 'Успешно отправлено!'
+  if (isLoading.value) return 'Отправка...'
+  return 'Отправить'
+})
 
 const validateEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -134,7 +141,10 @@ const handleSubmit = async () => {
     })
 
     if (response.success) {
-      modalStore.closeModal()
+      isSuccess.value = true
+      setTimeout(() => {
+        modalStore.closeModal()
+      }, 2000)
     }
   } catch (e) {
     error.value = 'Ошибка при отправке отклика'
