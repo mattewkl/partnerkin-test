@@ -1,142 +1,71 @@
-Базовые штуки для нукст - В САМОМ НИЗУ. 
-
-# Адаптивный Nuxt 3 проект
-
-## Дневник разработки
-
-#### День 1: Инициализация проекта и настройка SCSS
-
-#### Выполнено:
-- Создан новый Nuxt 3 проект с TypeScript
-- Настроена базовая структура проекта
-- Добавлены основные зависимости
-- Определена стратегия для SCSS и rem-based адаптива
-- создана и подключена база SCSS
-- Созданы типы для проекта
-- Созданы мок-данные и мок-API
-- созданы стартовые файлы для компонентов
-
-#### Принципы работы с rem:
-1. Базовый размер: 
-   - 10px (1rem = 10px для удобства расчетов)
-   - Плавное масштабирование после 1400px через формулу calc(100vw / 1400 * 10)
-   - Максимальный размер не ограничен
-
-2. Медиа-запросы:
-   - Desktop first подход
-   - Брейкпоинты в rem для консистентности:
-     * xl: 192rem (1920px)
-     * desktop: 140rem (1400px)
-     * laptop: 102.4rem (1024px)
-     * tablet: 76.8rem (768px)
-     * mobile: 32rem (320px)
-
-3. Масштабирование компонентов:
-   - Все размеры в rem
-   - Использование CSS-переменных для гибкой настройки
 
 
-#### Следующие шаги:
-1. Создание структуры SCSS файлов согласно макету
-2. Настройка базовых миксинов для медиа-запросов
+# Тестовое задание Partnerkin
 
-#### Технический стек:
+Демо: [GitHub Pages](https://your-username.github.io/partnerkin-test/)
+
+## Технологии
+
 - Nuxt 3
 - TypeScript
+- Pinia
 - SCSS
-- Адаптивная верстка без UI фреймворков
+- OpenAPI (Swagger)
 
-#### Особенности проекта:
-- Строгая типизация TypeScript
-- Модульная структура
-- Резиновый адаптив через rem на больших разрешениях
-- Моковые API endpoints
-- Адаптивная верстка согласно макету
+## Функционал
 
-#### План следующих шагов:
-1. Настройка SCSS и базовых стилей
-2. Создание системы масштабирования через rem
-3. Настройка моковых API endpoints
-4. Имплементация типов для API
-5. Создание базовых компонентов
-6. Настройка адаптивной верстки
+- Просмотр профилей пользователей
+- Просмотр списка заданий
+- Отправка отклика на задание с валидацией
+- Адаптивный дизайн
+- Документация API
 
 ## Установка и запуск
 
+1. Клонировать репозиторий
 
-
-# Nuxt Minimal Starter
-
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install dependencies:
-
+2. Установить зависимости:
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+3. Запустить в режиме разработки:
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+4. Открыть http://localhost:3000
 
-Build the application for production:
+## API Документация
 
-```bash
-# npm
-npm run build
+Документация API доступна по адресу http://localhost:3000/docs
 
-# pnpm
-pnpm build
+## Деплой
 
-# yarn
-yarn build
+Проект автоматически деплоится на GitHub Pages при пуше в main ветку.
 
-# bun
-bun run build
+## Структура проекта
+
+```
+├── components/          # Vue компоненты
+│   ├── Common/         # Общие компоненты
+│   ├── Form/           # Компоненты форм
+│   ├── Modal/          # Модальные окна
+│   └── Profile/        # Компоненты профиля
+├── pages/              # Страницы
+├── stores/             # Pinia сторы
+├── types/              # TypeScript типы
+├── docs/              # OpenAPI документация
+└── server/            # Серверные роуты
 ```
 
-Locally preview production build:
+## Особенности реализации
 
-```bash
-# npm
-npm run preview
+- Персистентное состояние юзеров через Pinia
+- Валидация форм
+- Обработка ошибок
+- Адаптивная верстка
+- Документированное мок-API
 
-# pnpm
-pnpm preview
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+ВАЖНО - остались тестовые серверные роуты которые не могут нормально деплоится, но оставил для проверки реализации дополнительного задания. 
