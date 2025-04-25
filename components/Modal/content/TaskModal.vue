@@ -131,21 +131,24 @@ const handleSubmit = async () => {
     isLoading.value = true
     error.value = null
 
-    const response = await $fetch<{ success: boolean }>('/api/tasks/response', {
-      method: 'POST',
-      body: {
-        taskId: props.data.id,
-        executorId: userStore.currentUser.id,
-        ...formData.value
-      } as TaskAppliedPostType
-    })
+    // Имитация запроса для GitHub Pages, пушто даже с мок запросами этот сайт работает через одно место
+    await new Promise(resolve => setTimeout(resolve, 500))
+    
+    // TODO: раскомментировать для реального API
+    // const response = await $fetch<{ success: boolean }>('/api/tasks/response', {
+    //   method: 'POST',
+    //   body: {
+    //     taskId: props.data.id,
+    //     executorId: userStore.currentUser.id,
+    //     ...formData.value
+    //   } as TaskAppliedPostType
+    // })
 
-    if (response.success) {
-      isSuccess.value = true
-      setTimeout(() => {
-        modalStore.closeModal()
-      }, 2000)
-    }
+    isSuccess.value = true
+    setTimeout(() => {
+      modalStore.closeModal()
+    }, 2000)
+
   } catch (e) {
     error.value = 'Ошибка при отправке отклика'
   } finally {
