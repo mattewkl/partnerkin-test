@@ -1,14 +1,20 @@
 <template>
   <CommonBreadcrumbs :breadcrumbs="currentBreadcrumbs" />
-  <div v-if="error" class="error">{{ error }}</div>
-  <div v-else-if="user" class="profile-grid">
-    <ProfileCard :userData="user" />
-    <div class="tasks-list-container">
-      <h1 class="base-text tasks-list-container__title">Все задания</h1>
-      <TasksList v-if="tasks" :tasks="tasks" />
-    </div>
+  <div class="profile-grid">
+    <template v-if="error">
+      <p class="base-text status-message status-message--error">{{ error }}</p>
+    </template>
+    <template v-else-if="user">
+      <ProfileCard :userData="user" />
+      <div class="tasks-list-container">
+        <h1 class="base-text tasks-list-container__title">Все задания</h1>
+        <TasksList v-if="tasks" :tasks="tasks" />
+      </div>
+    </template>
+    <template v-else>
+      <p class="base-text status-message">Загрузка профиля...</p>
+    </template>
   </div>
-  <div v-else class="loading">Загрузка...</div>
 </template>
 
 <script setup lang="ts">
@@ -60,17 +66,24 @@ const currentBreadcrumbs = computed(() => {
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .profile-grid {
   margin-inline: 2rem;
   display: grid;
   grid-template-columns: 32rem 1fr;
-  gap: 3.2rem;
+  gap: 2.4rem;
+  margin-top: 2.4rem;
 }
 
-@media (max-width: 1400px) {
-  .profile-grid {
-    grid-template-columns: calc(24rem + (32 - 24) * ((100vw - 1024px) / (1400 - 1024))) 1fr;
+.status-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.8rem;
+  color: $text-secondary;
+  padding: 4rem 0;
+
+  &--error {
+    color: $text-error;
   }
 }
 
@@ -83,6 +96,12 @@ const currentBreadcrumbs = computed(() => {
 .tasks-list-container__title {
   font-size: 3.2rem;
   font-weight: 600;
+}
+
+@media (max-width: 1400px) {
+  .profile-grid {
+    grid-template-columns: calc(24rem + (32 - 24) * ((100vw - 1024px) / (1400 - 1024))) 1fr;
+  }
 }
 
 @media (max-width: 1024px) {

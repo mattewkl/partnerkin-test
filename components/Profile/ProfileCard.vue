@@ -11,9 +11,7 @@
         <span class="divider"></span>
         <div class="profile-card__social-links">
           <template v-for="(link, index) in userData.socialLinks" :key="`social-link-${index}`">
-            <a :href="link.url" class="profile-card__social-link">
-              <img :src="`/svg/socials/${link.icon}.svg`" :alt="link.name" />
-            </a>
+            <ProfileSocialLink :link="link" />
           </template>
         </div>
       </div>
