@@ -12,10 +12,24 @@
 <script setup lang="ts">
 import type { TaskType } from '@/types/taskTypes';
 import type { UserDataType } from '@/types/authTypes';
+import { useUserStore } from '@/stores/user';
+import { ref, onBeforeMount } from 'vue'
 
 const route = useRoute()
-const { data: user } = await useFetch<UserDataType>(`/api/users/${route.params.slug}`, {
-  server: false
+const userStore = useUserStore()
+
+const user = ref<UserDataType | null>(null)
+const error = ref<string | null>(null)
+
+onBeforeMount(async () => {
+  try {
+    const userData = await userStore.fetchUser(Number(route.params.slug))
+    if (userData) {
+      user.value = userData
+    }
+  } catch (e) {
+    error.value = 'Failed to load user data'
+  }
 })
 
 const { data: tasks } = await useFetch<TaskType[]>(`/api/tasks`, {

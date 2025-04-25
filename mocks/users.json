@@ -29,7 +29,8 @@
           "url": "https://www.vk.com",
           "icon": "vk"
         }
-      ]
+      ],
+      "phone": "+7 (999) 123-45-67"
     },
     {
       "id": 2,
@@ -41,9 +42,9 @@
       "image": "https://images.steamusercontent.com/ugc/1025077468226875493/D95E4AC6810623CA2D5D4FB9D7A4F6332A65B66B/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
       "socialLinks": [
         {
-          "name": "telegram",
-          "url": "https://t.me",
-          "icon": "telegram"
+          "name": "vk",
+          "url": "https://vk.com",
+          "icon": "vk"
         }
       ]
     }

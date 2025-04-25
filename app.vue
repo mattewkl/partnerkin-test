@@ -2,6 +2,7 @@
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>
+  <ModalBaseModal />
 </template>
 
 <script setup lang="ts">

@@ -12,3 +12,13 @@ export type TaskType = {
     updatedAt: string;
     executorId: number | null;
 }
+
+export type TaskAppliedPostType = {
+  taskId: number;
+  executorId: number;
+  comment: string;
+  phone: string;
+  email: string;
+  telegram: string;
+  doNotCall: boolean;
+}

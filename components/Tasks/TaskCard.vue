@@ -8,17 +8,22 @@
         <p class="base-text task-card__price">{{ task.price }} ₽.</p>
         <p class="base-text task-card__price">{{ task.timeToComplete }} {{ getDayWord(task.timeToComplete) }}</p>
       </div>
-      <button class="task-card__btn"><span class="base-text task-card__btn-text">Взять задачу</span></button>
+      <button class="task-card__btn" @click="openTaskModal">
+        <span class="base-text task-card__btn-text">Взять задачу</span>
+      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { TaskType } from '@/types/taskTypes';
+import { useModalStore } from '@/stores/modal'
 
 const props = defineProps<{
   task: TaskType
 }>()
+
+const modalStore = useModalStore()
 
 //супертупо+супербыстро+суперработает
 const getDayWord = (days: number) => {
@@ -28,6 +33,10 @@ const getDayWord = (days: number) => {
   if (String(days).endsWith('1')) return 'день'
   if (String(days).endsWith('2') || String(days).endsWith('3') || String(days).endsWith('4')) return 'дня'
   return 'дней'
+}
+
+const openTaskModal = () => {
+  modalStore.openModal('task', props.task)
 }
 </script>
 
