@@ -43,6 +43,14 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/partnerkin-test/' // Замените на имя вашего репозитория
+    baseURL: process.env.NUXT_APP_BASE_URL || '/partnerkin-test/'
+  },
+  nitro: {
+    prerender: {
+      routes: [
+        '/api/users.json',  // Укажем пути для пререндера JSON файлов
+        '/api/tasks.json'
+      ]
+    }
   }
 })

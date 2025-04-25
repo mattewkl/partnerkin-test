@@ -32,8 +32,8 @@ onBeforeMount(async () => {
   }
 })
 
-const { data: tasks } = await useFetch<TaskType[]>(`/api/tasks`, {
-  server: false,
+const { data: users } = await useFetch<UserDataType[]>('/api/users.json')
+const { data: tasks } = await useFetch<TaskType[]>('/api/tasks.json', {
   default: () => []
 })
 
