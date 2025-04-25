@@ -1,6 +1,5 @@
 <template>
   <div class="task-modal">
-    <h2 class="base-text task-modal__title">Информация по отклику</h2>
     <form @submit.prevent="handleSubmit" class="task-modal__form">
       <div class="input-wrapper">
         <textarea 
@@ -10,35 +9,37 @@
         />
       </div>
       
-      <div class="input-wrapper">
-        <input 
-          v-model="formData.phone"
+      <div class="smol-inputs">
+        <div class="input-wrapper">
+          <input 
+            v-model="formData.phone"
           type="tel"
           placeholder="Телефон"
           class="base-input"
         />
-      </div>
-      
-      <div class="input-wrapper">
-        <input 
-          v-model="formData.email"
-          type="email"
-          placeholder="Email *"
-          class="base-input"
-          :class="{ 'input-error': validationErrors.email }"
-        />
-        <span v-if="validationErrors.email" class="error-text">
-          {{ validationErrors.email }}
-        </span>
-      </div>
-      
-      <div class="input-wrapper">
-        <input 
-          v-model="formData.telegram"
-          type="text"
-          placeholder="Telegram"
-          class="base-input"
-        />
+        </div>
+        
+        <div class="input-wrapper">
+          <input 
+            v-model="formData.email"
+            type="email"
+            placeholder="Email *"
+            class="base-input"
+            :class="{ 'input-error': validationErrors.email }"
+          />
+          <span v-if="validationErrors.email" class="error-text">
+            {{ validationErrors.email }}
+          </span>
+        </div>
+        
+        <div class="input-wrapper">
+          <input 
+            v-model="formData.telegram"
+            type="text"
+            placeholder="Telegram"
+            class="base-input"
+          />
+        </div>
       </div>
       
       <FormCheckbox
@@ -150,11 +151,21 @@ const handleSubmit = async () => {
   gap: 1.6rem;
 }
 
+.task-modal__textarea {
+    min-height: 8.4rem;
+}
+
 .task-modal__form {
   display: flex;
   width: 100%;
   flex-direction: column;
   gap: 1.6rem;
+}
+
+.smol-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
 .task-modal__title {

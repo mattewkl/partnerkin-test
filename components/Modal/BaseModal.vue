@@ -1,7 +1,10 @@
 <template>
     <div v-if="isOpen" class="modal-overlay" @click="handleOverlayClick">
       <div class="modal" @click.stop>
-        <button class="modal-close" @click="modalStore.closeModal">×</button>
+        <div class="modal-header">
+          <h2 class="base-text modal-title">Информация по отклику</h2>
+          <button class="modal-close" @click="modalStore.closeModal">×</button>
+        </div>
         <div class="modal-content">
           <TaskModal v-if="type === 'task'" :data="data" />
         </div>
@@ -39,7 +42,6 @@ const handlePopState = () => {
 onMounted(() => {
   document.addEventListener('keydown', handleEscape)
   window.addEventListener('popstate', handlePopState)
-  // Добавляем запись в историю при открытии модалки
   if (isOpen.value) {
     history.pushState(null, '', window.location.href)
   }
@@ -67,26 +69,59 @@ onUnmounted(() => {
 
 .modal {
   background: $bg-secondary;
-  padding: 2rem;
+  padding-inline: 2.8rem;
+  padding-block: 3.6rem;
   border-radius: $border-radius-standart;
   position: relative;
-  max-width: 50rem;
+  max-width: 49rem;
   width: 100%;
-  margin: 2rem;
+  margin: 1.5rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+
+.modal-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: $text-primary;
 }
 
 .modal-close {
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  background: none;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: $bg-primary;
   border: none;
-  font-size: 2.4rem;
+  border-radius: 50%;
+  font-size: 2rem;
   cursor: pointer;
   color: $text-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($bg-primary, 5%);
+  }
 }
 
 .modal-content {
-  margin-top: 2rem;
+  margin-top: 0;
+}
+
+@media (max-width: 460px) {
+    .modal {
+        padding-inline: 1.6rem;
+        padding-block: 2.8rem;
+    }
+
+    .modal-title {
+        font-size: 2rem;
+    }
 }
 </style> 
