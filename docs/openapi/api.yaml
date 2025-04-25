@@ -1,0 +1,217 @@
+openapi: 3.0.0
+info:
+  title: Tasks API
+  version: 1.0.0
+  description: API для работы с задачами
+
+paths:
+  /api/users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Получить данные пользователя
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+          description: ID пользователя
+      responses:
+        '200':
+          description: Данные пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDataType'
+        '404':
+          description: Пользователь не найден
+
+  /api/users:
+    get:
+      tags:
+        - Users
+      summary: Получить список пользователей
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserDataType'
+
+  /api/tasks:
+    get:
+      tags:
+        - Tasks
+      summary: Получить список задач
+      responses:
+        '200':
+          description: Список задач
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TaskType'
+
+  /api/tasks/response:
+    post:
+      tags:
+        - Tasks
+      summary: Отправить отклик на задачу
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskAppliedPostType'
+      responses:
+        '200':
+          description: Успешный отклик
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    $ref: '#/components/schemas/TaskAppliedPostType'
+        '400':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: number
+                  message:
+                    type: string
+
+components:
+  schemas:
+    UserDataType:
+      type: object
+      properties:
+        id:
+          type: number
+          description: ID пользователя
+        name:
+          type: string
+          description: Имя пользователя
+        email:
+          type: string
+          format: email
+          description: Email пользователя
+        username:
+          type: string
+          description: Никнейм пользователя
+        phone:
+          type: string
+          description: Телефон пользователя
+        createdAt:
+          type: string
+          format: date-time
+          description: Дата создания
+        updatedAt:
+          type: string
+          format: date-time
+          description: Дата обновления
+        image:
+          type: string
+          description: URL аватара
+        socialLinks:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Название соцсети
+              url:
+                type: string
+                format: uri
+                description: Ссылка на профиль
+              icon:
+                type: string
+                description: Название иконки
+
+    TaskType:
+      type: object
+      properties:
+        id:
+          type: number
+          description: ID задачи
+        title:
+          type: string
+          description: Заголовок задачи
+        typeTitle:
+          type: string
+          description: Название типа задачи
+        type:
+          type: number
+          description: ID типа задачи
+        description:
+          type: string
+          description: Описание задачи
+        status:
+          type: string
+          description: Статус задачи
+        price:
+          type: number
+          description: Цена задачи
+        completedAt:
+          type: string
+          format: date-time
+          nullable: true
+          description: Дата выполнения
+        timeToComplete:
+          type: number
+          description: Время на выполнение (в днях)
+        createdAt:
+          type: string
+          format: date-time
+          description: Дата создания
+        updatedAt:
+          type: string
+          format: date-time
+          description: Дата обновления
+        executorId:
+          type: number
+          nullable: true
+          description: ID исполнителя
+
+    TaskAppliedPostType:
+      type: object
+      required:
+        - taskId
+        - executorId
+        - email
+      properties:
+        taskId:
+          type: number
+          description: ID задачи
+        executorId:
+          type: number
+          description: ID исполнителя
+        comment:
+          type: string
+          description: Комментарий к отклику
+        phone:
+          type: string
+          description: Телефон исполнителя
+        email:
+          type: string
+          format: email
+          description: Email исполнителя (обязательное поле)
+        telegram:
+          type: string
+          description: Telegram username
+        doNotCall:
+          type: boolean
+          description: Флаг "не звонить"
+          default: false 
