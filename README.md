@@ -2,7 +2,7 @@
 
 # Тестовое задание Partnerkin
 
-Демо: [GitHub Pages](https://your-username.github.io/partnerkin-test/)
+Демо: [GitHub Pages](https://mattewkl.github.io/partnerkin-test/)
 
 ## Технологии
 
